@@ -26,7 +26,7 @@ export const Menu: FunctionComponent<Props> = () => {
             // <div className="flex h-1/6 w-full">
             <div className="flex h-1/6 fixed bottom-0 w-full">
                 <HideButton onClick={ToggleHideMenu} />
-                <Tile key={1} imageUrl={zoe} title={"Naročite avtomobil"} />
+                <Tile key={1} imageUrl={zoe} title={"Naročite prevoz"} />
                 <Tile key={2} imageUrl={eqs} title={"Sledite avtomobilom"}  linkPath="/map"/>
                 <Tile key={3} imageUrl={friends} title={"Povabite prijatelje"} />
                 <Tile key={4} imageUrl={carMeet} title={"Dogodki"} />

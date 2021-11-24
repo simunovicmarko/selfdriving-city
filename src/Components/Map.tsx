@@ -8,12 +8,17 @@ interface Props {
 }
 
 export const Map: FunctionComponent<Props> = () => {
-    const FERI: LatLngExpression = [46.55903286793199, 15.638056234591684];
+    let lat: number = 46.55903286793199;
+    let lon: number = 15.638056234591684;
+    const FERI: LatLngExpression = [lat, lon];
+    // const TyrsevaLat = [46.563950183673626, 46.563198046922494];
+    // const TyrsevaLon = [15.64550015794588, 15.647296089361188];
     const [position, setPosition] = useState<LatLngExpression>(FERI);
+
 
     const getLocation = () => {
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition((currentPosition: GeolocationPosition) => {setPosition([currentPosition.coords.latitude, currentPosition.coords.longitude]) });
+            navigator.geolocation.getCurrentPosition((currentPosition: GeolocationPosition) => { lat = currentPosition.coords.latitude; lon = currentPosition.coords.longitude; setPosition([lat, lon]) });
         }
     }
 
@@ -30,8 +35,8 @@ export const Map: FunctionComponent<Props> = () => {
                 />
                 <Marker position={position}>
                     <Popup>
-                        A pretty CSS3 popup. <br /> Easily customizable.
-                        {position === FERI ? <img src="https://feri.um.si/site/assets/files/1367/feri_by_night.jpg" /> : <></>}
+                        {position}
+                        {position === FERI ? <img src="https://feri.um.si/site/assets/files/1367/feri_by_night.jpg" alt="FERI" /> : <></>}
                     </Popup>
                 </Marker>
             </MapContainer>
